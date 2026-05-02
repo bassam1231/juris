@@ -1,0 +1,4 @@
+.env
+core/__pycache__/
+core/data/
+core/models/
