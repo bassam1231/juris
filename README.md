@@ -72,7 +72,7 @@ juris/
 ├── .env.example
 ├── vercel.json
 │
-├── api/                                ← Vercel serverless (Lab 4 only) *not implemented yet*
+├── api/                                ← Vercel serverless
 │   ├── index.py                    
 │   └── requirements.txt
 │
@@ -129,7 +129,7 @@ Three-column legal workbench (`frontend/index.html`):
 - **Center workspace** — Query input, examples, summary metrics cards
 - **Right panel** — Tabbed output: Rights · Contract · Transfer · Pipeline Log + PDF export
 
-Design: Off-white parchment + near-black ink + crimson accent. `Cormorant Garant` serif + `Courier Prime` monospace. Deliberately static — no distracting animations.
+Design: white parchment + near-black ink + crimson accent. `Cormorant Garant` serif + `Courier Prime` monospace. Deliberately static — no distracting animations.
 
 ---
 
