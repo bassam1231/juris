@@ -643,7 +643,7 @@ class SyntheticDatasetGenerator:
             batches   = (samples_per_type + 7) // 8  # ceil(n/8)
 
             for _ in range(batches):
-                batch_size = min(8, samples_per_type - len(documents))
+                batch_size = min(BATCH_SIZE, len(dataset))
                 batch      = self.generate_batch(type_name, batch_size, temperature)
                 documents.extend(batch)
 
@@ -839,6 +839,10 @@ class GANTrainer:
                 # Train generator once
                 g_loss = self._train_generator(batch_size, batch_types)
                 g_losses.append(g_loss)
+                if len(g_losses) == 0:
+                    raise RuntimeError(
+                    "No batches were processed in this epoch. "
+                    "Dataloader is empty (check batch_size, drop_last, dataset).")
 
             # Step schedulers
             self.sched_G.step()
@@ -930,7 +934,7 @@ def run_demo():
     print(sep)
 
     dataset    = LegalContractDataset(vocab, seq_len=SEQ_LEN, augment=True)
-    dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, drop_last=True)
+    dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, drop_last=False)
     print(f"  [Dataset] {len(dataset)} samples | {len(dataloader)} batches")
 
     # ── Initialize models ──────────────────────────────────────────────────────
