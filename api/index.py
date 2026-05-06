@@ -651,7 +651,7 @@ class FullRequest(BaseModel):
 # ENDPOINTS
 # ══════════════════════════════════════════════════════════════════════════════
 
-@app.post("/advise")
+@app.post("/api/advise")
 async def advise(req: AdviseRequest):
     """
     Legal advisory + case simulation — Lab 1.
@@ -677,7 +677,7 @@ async def advise(req: AdviseRequest):
         raise HTTPException(status_code=500, detail=f"Advisor failed: {str(e)}")
 
 
-@app.post("/generate")
+@app.post("/api/generate")
 async def generate(req: GenerateRequest):
     """
     Contract generation (Lab 2 GAN — LLM fallback on serverless)
@@ -722,7 +722,7 @@ async def generate(req: GenerateRequest):
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")
 
 
-@app.post("/transfer")
+@app.post("/api/transfer")
 async def transfer(req: TransferRequest):
     """
     Document style transfer — Lab 3.
@@ -753,7 +753,7 @@ async def transfer(req: TransferRequest):
         raise HTTPException(status_code=500, detail=f"Transfer failed: {str(e)}")
 
 
-@app.post("/full")
+@app.post("/api/full")
 async def full_pipeline(req: FullRequest):
     """
     Full integrated pipeline — Lab 4.
@@ -784,7 +784,7 @@ async def full_pipeline(req: FullRequest):
         raise HTTPException(status_code=500, detail=f"Pipeline failed: {str(e)}")
 
 
-@app.get("/health")
+@app.get("/api/health")
 async def health():
     """System health check."""
     return {
@@ -805,10 +805,10 @@ async def root():
         "version":   "1.0.0",
         "docs":      "/docs",
         "endpoints": [
-            "/advise",
-            "/generate",
-            "/transfer",
-            "/full",
-            "/health",
+            "/api/advise",
+            "/api/generate",
+            "/api/transfer",
+            "/api/full",
+            "/api/health",
         ],
     }
