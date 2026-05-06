@@ -86,30 +86,6 @@ juris/
 
 ### Run each lab independently
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Set environment
-cp .env.example .env
-# Add your GROQ_API_KEY to .env
-
-# Run labs in order
-python lab1_legal_foundation.py
-python lab2_gan_document_generator.py
-python lab3_style_transfer.py
-python lab4_integrated_system.py
-```
-
-### Run as API server (Lab 4)
-
-```bash
-uvicorn core.lab4_integrated_system:app --host 0.0.0.0 --port 8000 --reload
-*http://localhost:8000/*
-```
-
-Then open `frontend/index.html` in your browser.
-
 ## API Endpoints (Lab 4)
 
 | Method | Endpoint | Description |
